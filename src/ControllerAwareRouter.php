@@ -27,7 +27,7 @@ class ControllerAwareRouter
 
     protected string $controller;
 
-    public Router $router;
+    protected Router $router;
 
     public function __construct(Router $router, string $controller)
     {
