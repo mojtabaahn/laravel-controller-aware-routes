@@ -27,7 +27,7 @@ class ControllerAwareRouter
 
     protected string $controller;
 
-    protected Router $router;
+    public Router $router;
 
     public function __construct(Router $router, string $controller)
     {
@@ -48,6 +48,16 @@ class ControllerAwareRouter
         }
 
         return $this->macroableCall($name, $arguments);
+    }
+
+    public function getRouter(): Router
+    {
+        return $this->router;
+    }
+
+    public function getController(): string
+    {
+        return $this->controller;
     }
 
 
