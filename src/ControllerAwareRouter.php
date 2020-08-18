@@ -47,6 +47,22 @@ class ControllerAwareRouter
 
         }
 
+        if ($name === 'resource') {
+            return call_user_func_array([$this->router, 'resource'], [$arguments[0], $this->controller, $arguments[1] ?? []]);
+        }
+
         return $this->macroableCall($name, $arguments);
     }
+
+    public function getRouter(): Router
+    {
+        return $this->router;
+    }
+
+    public function getController(): string
+    {
+        return $this->controller;
+    }
+
+
 }
