@@ -17,6 +17,8 @@ use Illuminate\Routing\RouteRegistrar;
  */
 class Routes
 {
+    public static string $routerClass = ControllerAwareRouter::class;
+
     protected ?RouteRegistrar $routeRegistrar = null;
     protected ?string $controller = null;
 
@@ -30,6 +32,11 @@ class Routes
         return new static($controller);
     }
 
+    public static function setRouterClass(string $routerClass): void
+    {
+        self::$routerClass = $routerClass;
+    }
+
     public function getRegistrar()
     {
         return $this->routeRegistrar ?? new RouteRegistrar(app()->make('router'));
@@ -38,7 +45,7 @@ class Routes
     public function methods($callback): void
     {
         $this->getRegistrar()->group(function () use ($callback) {
-            $callback(new ControllerAwareRouter(app()->make('router'), $this->controller));
+            $callback(new static::$routerClass(app()->make('router'), $this->controller));
         });
     }
 

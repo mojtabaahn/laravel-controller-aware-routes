@@ -37,5 +37,6 @@ class RouterTest extends TestCase
         $this->get('test/get')->assertOk();
         $this->post('test/id/55')->assertOk();
         $this->get('test/invoke')->assertOk();
+
     }
 }
