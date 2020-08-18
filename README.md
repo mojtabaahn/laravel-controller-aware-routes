@@ -19,7 +19,12 @@ composer require mojtabaahn/laravel-controller-routes
 ## Usage
 
 ``` php
+<?php
 // routes/web.php
+
+use MojtabaaHN\LaravelControllerRoutes\Routes;
+use Illuminate\Support\Facades\Route;
+
 
 Routes::make('UserController')->methods(function (ControllerAwareRouter $router) {
     $router->get('user/{user}', 'profile')->name('user.profile');
@@ -54,7 +59,7 @@ Routes::make()
 
 // same as 
 
-Routes::prefix('user/{user}')
+Route::prefix('user/{user}')
     ->name('user.')
     ->middleware('web')
     ->group(function(){
