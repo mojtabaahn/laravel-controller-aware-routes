@@ -21,16 +21,47 @@ composer require mojtabaahn/laravel-controller-routes
 ``` php
 // routes/web.php
 
+Routes::make('UserController')->methods(function (ControllerAwareRouter $router) {
+    $router->get('user/{user}', 'profile')->name('user.profile');
+    $router->get('user/{user}/post/{post}','post')->name('user.post');
+});
+
+// Or
+
+Routes::make()
+    ->controller('UserController')
+    ->methods(function (ControllerAwareRouter $router) {
+        $router->get('user/{user}', 'profile')->name('user.profile');
+        $router->get('user/{user}/post/{post}','post')->name('user.post');
+    });
+
+// Same as
+
+Route::get('user/{user}', 'UserController@profile')->name('user.profile');
+Route::get('user/{user}/post/{post}','UserController@posts')->name('user.posts');
+
+// Using RouteRegistrar methods
+
 Routes::make()
     ->prefix('user/{user}')
     ->name('user.')
     ->middleware('web')
-    // And other route-group methods provided by Illuminate\Routing\RouteRegistrar
     ->controller('UserController')
     ->methods(function (ControllerAwareRouter $router) {
         $router->get('/', 'profile')->name('profile');
         $router->get('posts','posts')->name('posts');
     });
+
+// same as 
+
+Routes::prefix('user/{user}')
+    ->name('user.')
+    ->middleware('web')
+    ->group(function(){
+        Route::get('/', 'UserController@profile')->name('profile');
+        Route::get('posts','UserController@posts')->name('posts');
+    });
+
 ```
 
 ## Testing
