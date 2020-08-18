@@ -1,0 +1,52 @@
+{
+    "name": "mojtabaahn/laravel-controller-routes",
+    "description": "Adds Controller Centered Routes to Laravel",
+    "keywords": [
+        "laravel",
+        "laravel-controller-routes"
+    ],
+    "homepage": "https://github.com/mojtabaahn/laravel-controller-routes",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mojtabaa HN",
+            "email": "mojtabaa.hn@gmail.com",
+            "homepage": "https://github.com/mojtabaahn",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^5.0",
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "MojtabaaHN\\LaravelControllerRoutes\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MojtabaaHN\\LaravelControllerRoutes\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MojtabaaHN\\LaravelRouteController\\RouteControllerServiceProvider"
+            ],
+            "aliases": {}
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
