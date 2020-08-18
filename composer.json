@@ -41,9 +41,7 @@
     },
     "extra": {
         "laravel": {
-            "providers": [
-                "MojtabaaHN\\LaravelRouteController\\RouteControllerServiceProvider"
-            ],
+            "providers": [],
             "aliases": {}
         }
     },
