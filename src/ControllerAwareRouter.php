@@ -7,6 +7,7 @@ namespace MojtabaaHN\LaravelControllerRoutes;
 use BadMethodCallException;
 use Illuminate\Routing\Route;
 use Illuminate\Routing\Router;
+use Illuminate\Support\Traits\Macroable;
 
 /**
  * @method Route get(string $uri, string $action)
@@ -20,6 +21,10 @@ use Illuminate\Routing\Router;
  */
 class ControllerAwareRouter
 {
+    use Macroable {
+        Macroable::__call as macroableCall;
+    }
+
     protected string $controller;
 
     protected Router $router;
@@ -34,15 +39,15 @@ class ControllerAwareRouter
     {
         $proxyArray = ['get', 'post', 'put', 'patch', 'delete', 'any', 'options', 'head'];
 
-        if (!in_array($name, $proxyArray)) {
-            throw new BadMethodCallException(sprintf(
-                'Method %s::%s does not exist.', static::class, $name
-            ));
+        if (in_array($name, $proxyArray)) {
+
+            $arguments[1] = [$this->controller, $arguments[1]];
+
+            return call_user_func_array([$this->router, $name], $arguments);
+
         }
 
-        $arguments[1] = [$this->controller, $arguments[1]];
-
-        return call_user_func_array([$this->router, $name], $arguments);
+        return $this->macroableCall($name, $arguments);
     }
 
 
