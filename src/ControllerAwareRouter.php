@@ -5,6 +5,7 @@ namespace MojtabaaHN\LaravelControllerRoutes;
 
 
 use BadMethodCallException;
+use Illuminate\Routing\PendingResourceRegistration;
 use Illuminate\Routing\Route;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Traits\Macroable;
@@ -18,6 +19,7 @@ use Illuminate\Support\Traits\Macroable;
  * @method Route any(string $uri, string $action)
  * @method Route options(string $uri, string $action)
  * @method Route match(array $methods, string $uri, string $action)
+ * @method PendingResourceRegistration resource(string $name, array $options)
  */
 class ControllerAwareRouter
 {
