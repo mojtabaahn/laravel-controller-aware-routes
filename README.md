@@ -1,4 +1,4 @@
-# Laravel Controller Cenetered Routes
+# Laravel Controller Aware Routes
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/mojtabaahn/laravel-controller-routes.svg?style=flat-square)](https://packagist.org/packages/mojtabaahn/laravel-controller-routes)
 [![Total Downloads](https://img.shields.io/packagist/dt/mojtabaahn/laravel-controller-routes?style=flat-square)](https://packagist.org/packages/mojtabaahn/laravel-controller-routes)
